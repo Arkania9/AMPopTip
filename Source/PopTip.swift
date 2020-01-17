@@ -401,10 +401,16 @@ open class PopTip: UIView {
     backgroundColor = .clear
     
     if direction == .left {
-      maxWidth = CGFloat.minimum(maxWidth, from.origin.x - padding * 2 - edgeInsets.horizontal - arrowSize.width)
+      let suggestedWidth = CGFloat.minimum(maxWidth, from.origin.x - padding * 2 - edgeInsets.horizontal - arrowSize.width)
+      if maxWidth > suggestedWidth {
+        maxWidth = suggestedWidth
+      }
     }
     if direction == .right {
-      maxWidth = CGFloat.minimum(maxWidth, containerView.bounds.width - from.origin.x - from.width - padding * 2 - edgeInsets.horizontal - arrowSize.width)
+      let suggestedWidth = CGFloat.minimum(maxWidth, containerView.bounds.width - from.origin.x - from.width - padding * 2 - edgeInsets.horizontal - arrowSize.width)
+      if maxWidth > suggestedWidth {
+        maxWidth = suggestedWidth
+      }
     }
     
     textBounds = textBounds(for: text, attributedText: attributedText, view: customView, with: font, padding: padding, edges: edgeInsets, in: maxWidth)
