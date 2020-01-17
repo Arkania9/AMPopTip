@@ -82,7 +82,7 @@ public extension PopTip {
     if let backgroundMask = backgroundMask {
       containerView?.addSubview(backgroundMask)
     }
-    containerView?.addSubview(self)
+    containerView?.insertSubview(self, at: 0)
 
     UIView.animate(withDuration: animationIn, delay: delayIn, usingSpringWithDamping: 0.6, initialSpringVelocity: 1.5, options: [.curveEaseInOut, .beginFromCurrentState], animations: {
       self.transform = .identity
